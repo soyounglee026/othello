@@ -10,7 +10,7 @@ extern int fW, fE, fN, fS, fNW, fNE, fSW, fSE;
 
 void init_othello() {
 	
-	printf("  0 1 2 3 4 5\n");
+	printf("  0 1 2 3 4 5\n"); 
 	
 	for(ROWS=0;ROWS<N;ROWS++) {
 		printf(" -------------\n");
@@ -24,14 +24,14 @@ void init_othello() {
 	
 }
 
-void print_othello() {
+void print_othello() { 
 	char *ptr;
 	ptr = *gameboard;
 	
 	numofW=0;
 	numofB=0;
 	
-	while(*ptr) {
+	while(*ptr) { //포인터 이용해서 오델로 개수 세기 
 		if (*ptr == 'O')
 			numofW++;
 		else if (*ptr == 'X')
@@ -39,7 +39,26 @@ void print_othello() {
 		ptr++;
 	}
 	
-	if(numofW+numofB<N*N)
+	if(numofW+numofB<N*N) //게임 진행 중일 때 총 배치 상황 출력 
 		printf(" STATUS - WHITE : %d, BLACK : %d\n\n", numofW, numofB);
+}
+
+void flipped_othello() {
+	printf("\n :: flip result ::\n");
+	printf("  W:%d E:%d N:%d S:%d NW:%d NE:%d SW:%d SE:%d\n",
+	fW, fE, fN, fS, fNW, fNE, fSW, fSE);
+	
+	if(fW+fE+fN+fS+fNW+fNE+fSW+fSE!=0) { //총 뒤집어진 오델로 개수 출력 
+		if(turn==0) {
+			printf("  White has flipped %d othello(s)!\n\n", fW+fE+fN+fS+fNW+fNE+fSW+fSE);
+			turn+=1; //검은색 턴으로 바꿈  
+		}
+		else if(turn==1) {
+			printf("  Black has flipped %d othello(s)!\n\n", fW+fE+fN+fS+fNW+fNE+fSW+fSE);
+			turn+=-1; //흰색 턴으로 바꿈  
+		}
+	}
+	else
+		printf("invalid input! (no flip happens)\n\n"); //잘못된 곳에 두었을 때 출력 
 }
 
