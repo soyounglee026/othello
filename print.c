@@ -59,6 +59,22 @@ void flipped_othello() {
 		}
 	}
 	else
-		printf("invalid input! (no flip happens)\n\n"); //잘못된 곳에 두었을 때 출력 
+		printf("invalid input! (no flip happens)\n\n"); //잘못된 곳에 두었을 때 출력  
+}
+
+void check_result() {
+	if(numofW+numofB==N*N) 
+		printf("The number of white othellos is %d, The number of black othellos is %d\n", numofW, numofB);
+	else if(numofW==0)
+		printf("There is no white othello.\n");
+	else if(numofB==0)
+		printf("There is no black othello.\n");
+	
+	if(numofW>numofB) //흰색 오델로가 더 많을 때  
+		printf("The winner is WHITE!\n");
+	else if(numofB>numofW) //검은색 오델로가 더 많을 때  
+		printf("The winner is BLACK!\n");
+	else
+		printf("It's a DRAW!\n");
 }
 

@@ -7,7 +7,7 @@ extern int fW, fE, fN, fS, fNW, fNE, fSW, fSE;
 
 void flip_condition() { 
 	
-	int i, k, l; //반복문에서 쓸 변수 
+	int i, k, l; //for문에서 쓸 변수 
 	
 	if(turn==0) { //흰색 차례일 때 
 		if(ROWS<4&&gameboard[ROWS+1][COLS]=='X'){ //남쪽 
