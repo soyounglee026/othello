@@ -17,6 +17,7 @@ extern int isGameEnd(); //게임이 끝나는 조건
 extern void check_result(); //결과 출력
 int turn=0; //0은 흰색 턴, 1은 검은색 턴  
 int fW, fE, fN, fS, fNW, fNE, fSW, fSE; //각 방향으로 뒤집힌 개수 나타내는 변수 
+extern int passW, passB;
 
 int main(int argc, char *argv[]) {
 	
@@ -36,20 +37,22 @@ int main(int argc, char *argv[]) {
 			init_othello();
 			print_othello();
 			
-			if(turn==0){
-				if(turn==0&&turn_pass()==0) { //턴 정하기
+			if(turn==0){ //턴 정하기
+				turn_pass();
+				if(turn==0&&passW==0) { //흰색이 놓을 곳 없을 때  
 					turn+=1;
 					printf("put a new black othello : ");
 				}
-				else if(turn==0&&turn_pass()!=0)
+				else if(turn==0&&passW!=0)
 					printf("put a new white othello : ");
 			}
-			else if(turn==1){		
-				if(turn==1&&turn_pass()==0) {
+			else if(turn==1){
+				turn_pass();	
+				if(turn==1&&passB==0) {
 					turn+=-1;
 					printf("put a new white othello : ");
 				}
-				else if(turn==1&&turn_pass()!=0)
+				else if(turn==1&&passB!=0)
 					printf("put a new black othello : ");
 			}
 			scanf("%d %d", &ROWS, &COLS); //오델로 놓을 곳 입력받기 
@@ -68,4 +71,4 @@ int main(int argc, char *argv[]) {
 	check_result();
 	
 	return 0;
-}
+} 

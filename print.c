@@ -7,6 +7,7 @@ extern int numofW, numofB;
 extern int ROWS, COLS;
 extern int turn;
 extern int fW, fE, fN, fS, fNW, fNE, fSW, fSE;
+extern int passW, passB;
 
 void init_othello() {
 	
@@ -67,12 +68,17 @@ void flipped_othello() {
 }
 
 void check_result() {
+	turn_pass();
 	if(numofW+numofB==N*N) 
 		printf("The number of white othellos is %d, The number of black othellos is %d\n", numofW, numofB);
 	else if(numofW==0)
 		printf("There is no white othello.\n");
 	else if(numofB==0)
 		printf("There is no black othello.\n");
+	else if(passW==0&&passB==0) {
+		printf("There is no space to put othello.\n");
+		printf("The number of white othellos is %d, The number of black othellos is %d\n", numofW, numofB);
+	}
 	
 	if(numofW>numofB) //흰색 오델로가 더 많을 때  
 		printf("The winner is WHITE!\n");
