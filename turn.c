@@ -14,8 +14,8 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 		for(l=0;l<N;l++)
 			for(h=0;h<N;h++) 
 				if(gameboard[l][h]=='O') 
-					for(k=1;k<5;k++) {
-						if(l+k<5)
+					for(k=1;k<N-1;k++) {
+						if(l+k<N-1)
 							if(gameboard[l+k][h]=='X'&&gameboard[l+k+1][h]==' '){ //8개 방향 확인
 								passW++; //놓을 곳 있으면 pass의 수를 증가시킴
 								continue;
@@ -25,7 +25,7 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passW++;
 								continue;
 							}
-						if(h+k<5)
+						if(h+k<N-1)
 							if(gameboard[l][h+k]=='X'&&gameboard[l][h+k+1]==' '){
 								passW++;
 								continue;
@@ -35,7 +35,7 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passW++;
 								continue;
 							}
-						if(l+k<5&&h+k<5)
+						if(l+k<N-1&&h+k<N-1)
 							if(gameboard[l+k][h+k]=='X'&&gameboard[l+k+1][h+k+1]==' '){
 								passW++;
 								continue;
@@ -45,12 +45,12 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passW++;
 								continue;
 							}
-						if(l-k>0&&h+k<5)
+						if(l-k>0&&h+k<N-1)
 							if(gameboard[l-k][h+k]=='X'&&gameboard[l-k-1][h+k+1]==' '){
 								passW++;
 								continue;
 							}
-						if(l+k<5&&h-k>0)
+						if(l+k<N-1&&h-k>0)
 							if(gameboard[l+k][h-k]=='X'&&gameboard[l+k+1][h-k-1]==' '){
 								passW++;
 								continue;
@@ -63,8 +63,8 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 		for(l=0;l<N;l++)
 			for(h=0;h<N;h++) 
 				if(gameboard[l][h]=='X')
-					for(k=1;k<5;k++) {
-						if(l+k<5) 
+					for(k=1;k<N-1;k++) {
+						if(l+k<N-1) 
 							if(gameboard[l+k][h]=='O'&&gameboard[l+k+1][h]==' '){
 								passB++;
 								continue;
@@ -74,7 +74,7 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passB++;
 								continue;
 							}
-						if(h+k<5) 
+						if(h+k<N-1) 
 							if(gameboard[l][h+k]=='O'&&gameboard[l][h+k+1]==' '){
 								passB++;
 								continue;
@@ -84,7 +84,7 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passB++;
 								continue;
 							}
-						if(l+k<5&&h+k<5) 	
+						if(l+k<N-1&&h+k<N-1) 	
 							if(gameboard[l+k][h+k]=='O'&&gameboard[l+k+1][h+k+1]==' '){
 								passB++;
 								continue;
@@ -94,12 +94,12 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 								passB++;
 								continue;
 							}
-						if(l-k>0&&h+k<5) 	
+						if(l-k>0&&h+k<N-1) 	
 							if(gameboard[l-k][h+k]=='O'&&gameboard[l-k-1][h+k+1]==' '){
 								passB++;
 								continue;
 							}
-						if(l+k<5&&h-k>0) 	
+						if(l+k<N-1&&h-k>0) 	
 							if(gameboard[l+k][h-k]=='O'&&gameboard[l+k+1][h-k-1]==' '){
 								passB++;
 								continue;
@@ -114,6 +114,7 @@ int turn_pass() { //놓을 곳 없으면 턴 패스
 int isGameEnd() {
 	int result;
 	othello_num();
+	turn_pass();
 	
 	if(numofW==0||numofB==0) //어느 한 오델로 색으로 통일 되었을 때 
 		result=numofW*numofB;

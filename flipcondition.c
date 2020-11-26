@@ -10,7 +10,7 @@ void flip_condition() {
 	int i, k, l; //for문에서 쓸 변수 
 	
 	if(turn==0) { //흰색 차례일 때 
-		if(ROWS<4&&gameboard[ROWS+1][COLS]=='X'){ //남쪽 
+		if(ROWS<N-2&&gameboard[ROWS+1][COLS]=='X'){ //남쪽 
 			for(k=1;k<N-1;k++) {  
 				if(gameboard[ROWS+k][COLS]=='X'&&gameboard[ROWS+k+1][COLS]=='O')//오델로를 놓을 수 있는지 확인
 					for(i=1;i<N-1;i++){
@@ -67,7 +67,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(COLS<4&&gameboard[ROWS][COLS+1]=='X'){ //동쪽 
+		if(COLS<N-2&&gameboard[ROWS][COLS+1]=='X'){ //동쪽 
 				for(k=1;k<N-1;k++){
 					if(gameboard[ROWS][COLS+k]=='X'&&gameboard[ROWS][COLS+k+1]=='O')
 						for(i=1;i<N-1;i++){
@@ -105,7 +105,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS>1&&COLS<4&&gameboard[ROWS-1][COLS+1]=='X'){ //북동쪽  
+		if(ROWS>1&&COLS<N-2&&gameboard[ROWS-1][COLS+1]=='X'){ //북동쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS-k][COLS+k]=='X'&&gameboard[ROWS-k-1][COLS+k+1]=='O')		
 					for(i=1;i<N-1;i++) {
@@ -124,7 +124,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS<4&&COLS>1&&gameboard[ROWS+1][COLS-1]=='X'){ //남서쪽  
+		if(ROWS<N-2&&COLS>1&&gameboard[ROWS+1][COLS-1]=='X'){ //남서쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS+k][COLS-k]=='X'&&gameboard[ROWS+k+1][COLS-k-1]=='O')		
 					for(i=1;i<N-1;i++) {
@@ -143,7 +143,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS<4&&COLS<4&&gameboard[ROWS+1][COLS+1]=='X'){ //남동쪽  
+		if(ROWS<N-2&&COLS<N-2&&gameboard[ROWS+1][COLS+1]=='X'){ //남동쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS+k][COLS+k]=='X'&&gameboard[ROWS+k+1][COLS+k+1]=='O')		
 					for(i=1;i<N-1;i++) {
@@ -164,7 +164,7 @@ void flip_condition() {
 	}
 	
 	else if(turn==1) { //검은색 차례일 때 		
-		if(ROWS<4&&gameboard[ROWS+1][COLS]=='O'){ //남쪽 
+		if(ROWS<N-2&&gameboard[ROWS+1][COLS]=='O'){ //남쪽 
 			for(k=1;k<N-1;k++) { 
 				if(gameboard[ROWS+k][COLS]=='O'&&gameboard[ROWS+k+1][COLS]=='X')
 					for(i=1;i<N-1;i++){
@@ -221,7 +221,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(COLS<4&&gameboard[ROWS][COLS+1]=='O'){ //동쪽 
+		if(COLS<N-2&&gameboard[ROWS][COLS+1]=='O'){ //동쪽 
 			for(k=1;k<N-1;k++){
 				if(gameboard[ROWS][COLS+k]=='O'&&gameboard[ROWS][COLS+k+1]=='X')
 					for(i=1;i<N-1;i++){
@@ -259,7 +259,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS>1&&COLS<4&&gameboard[ROWS-1][COLS+1]=='O'){ //북동쪽  
+		if(ROWS>1&&COLS<N-2&&gameboard[ROWS-1][COLS+1]=='O'){ //북동쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS-k][COLS+k]=='O'&&gameboard[ROWS-k-1][COLS+k+1]=='X')
 					for(i=1;i<N-1;i++) {
@@ -278,7 +278,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS<4&&COLS>1&&gameboard[ROWS+1][COLS-1]=='O'){ //남서쪽  
+		if(ROWS<N-2&&COLS>1&&gameboard[ROWS+1][COLS-1]=='O'){ //남서쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS+k][COLS-k]=='O'&&gameboard[ROWS+k+1][COLS-k-1]=='X')		
 					for(i=1;i<N-1;i++) {
@@ -297,7 +297,7 @@ void flip_condition() {
 			}
 		}
 		
-		if(ROWS<4&&COLS<4&&gameboard[ROWS+1][COLS+1]=='O'){ //남동쪽  
+		if(ROWS<N-2&&COLS<N-2&&gameboard[ROWS+1][COLS+1]=='O'){ //남동쪽  
 			for(k=1;k<N-1;k++) {
 				if(gameboard[ROWS+k][COLS+k]=='O'&&gameboard[ROWS+k+1][COLS+k+1]=='X')		
 					for(i=1;i<N-1;i++) {
