@@ -24,7 +24,7 @@ void init_othello() {
 	
 }
 
-void print_othello() { 
+int othello_num() { 
 	char *ptr;
 	ptr = *gameboard;
 	
@@ -38,7 +38,11 @@ void print_othello() {
 			numofB++;
 		ptr++;
 	}
-	
+	return numofW, numofB;
+}
+
+void print_othello() {
+	othello_num();
 	if(numofW+numofB<N*N) //게임 진행 중일 때 총 배치 상황 출력 
 		printf(" STATUS - WHITE : %d, BLACK : %d\n\n", numofW, numofB);
 }
